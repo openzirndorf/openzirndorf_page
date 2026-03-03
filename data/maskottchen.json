@@ -1,0 +1,27 @@
+[
+  {
+    "datei": "tuxi.png",
+    "name": "Tuxi",
+    "beschreibungstext": "Tuxi ist der digitale Kümmerer von openzirndorf. Mit seinem grünen USB-Stick bringt er Daten, Ideen und Projekte zusammen. Er steht für Open Source, Transparenz und den Mut, Dinge selbst in die Hand zu nehmen – pragmatisch, freundlich und technisch versiert."
+  },
+  {
+    "datei": "quirin.png",
+    "name": "Quirin",
+    "beschreibungstext": "Quirin bringt mit seiner Quetschn Schwung in die Gemeinschaft. Er steht für Bodenständigkeit, Lebensfreude und das kulturelle Herz Zirndorfs. Als musikalischer Botschafter verbindet er Tradition mit frischen Ideen und schafft Begegnungen zwischen Menschen."
+  },
+  {
+    "datei": "fynn.png",
+    "name": "Fynn",
+    "beschreibungstext": "Fynn ist neugierig, schlau und immer einen Schritt voraus. Mit seinem Laptop entwickelt er neue digitale Werkzeuge für die Stadt. Er steht für Kreativität, technisches Know-how und den Mut, Herausforderungen mit klugen Lösungen anzugehen."
+  },
+  {
+    "datei": "kreiselix.png",
+    "name": "Kreiselix",
+    "beschreibungstext": "Kreiselix steht nie still. Als fröhlicher Kreisel bringt er Ideen in Bewegung und sorgt dafür, dass Projekte Fahrt aufnehmen. Er symbolisiert Dynamik, Austausch und die Energie, die entsteht, wenn viele Menschen gemeinsam an etwas arbeiten."
+  },
+  {
+    "datei": "nico.png",
+    "name": "Nico",
+    "beschreibungstext": "Nico behält viele Aufgaben gleichzeitig im Griff. Mit Headset und Controller steht er für digitale Kompetenz, Vernetzung und die junge, technikaffine Community. Er symbolisiert Multitasking, Teamplay und Freude an moderner Technologie."
+  }
+]

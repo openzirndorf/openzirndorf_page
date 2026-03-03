@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Datenschutz – OpenZirndorf</title>
+  <meta name="robots" content="noindex" />
+  <link rel="icon" href="static/assets/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700;0,14..32,800;0,14..32,900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="static/styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Zum Inhalt springen</a>
+
+  <!-- ===== Header ===== -->
+  <header class="header" id="header">
+    <div class="container nav-container">
+      <a class="logo" href="index.html">
+        <img src="static/media/logo.png" alt="OpenZirndorf" class="logo-img" />
+      </a>
+      <nav class="nav" aria-label="Hauptnavigation">
+        <a href="index.html#was-wir-sind">Was wir sind</a>
+        <a href="index.html#tools">Tools</a>
+        <a href="index.html#termine">Termine</a>
+        <a href="index.html#mitmachen">Mitmachen</a>
+        <a href="index.html#medien">Medien</a>
+      </nav>
+      <a class="btn btn-primary nav-cta" href="index.html#mitmachen">Mitmachen</a>
+      <button class="hamburger" id="hamburger" aria-label="Menü öffnen" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ===== Mobile Nav ===== -->
+  <div class="mobile-nav" id="mobile-nav" aria-hidden="true">
+    <nav>
+      <a href="index.html#was-wir-sind">Was wir sind</a>
+      <a href="index.html#tools">Tools</a>
+      <a href="index.html#termine">Termine</a>
+      <a href="index.html#mitmachen">Mitmachen</a>
+      <a href="index.html#medien">Medien</a>
+    </nav>
+    <a class="btn btn-primary" href="index.html#mitmachen">Jetzt mitmachen</a>
+  </div>
+
+  <main id="main">
+    <section class="section">
+      <div class="container">
+        <div class="legal-page">
+          <a href="index.html" class="legal-back">← Zurück zur Startseite</a>
+          <h1>Datenschutz</h1>
+
+          <p>
+            Diese Website wird auf GitHub.com bereitgestellt und als statische Seite ausgeliefert.
+            Beim Aufruf können durch den Hosting-Anbieter technisch notwendige Verbindungsdaten
+            (z.&nbsp;B. IP-Adresse, Zeitstempel, angeforderte Ressource) verarbeitet werden.
+          </p>
+
+          <p>
+            Die Seite selbst setzt keine Cookies und verwendet keine eigene serverseitige
+            Verarbeitung von Formularinhalten. Für Details zur Verarbeitung durch den
+            Hosting-Anbieter gelten zusätzlich die
+            <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener noreferrer">Datenschutzbestimmungen von GitHub</a>.
+          </p>
+
+          <p>
+            Bei Fragen zum Datenschutz:
+            <a href="mailto:root@openzirndorf.de">root@openzirndorf.de</a>
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== Footer ===== -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <a class="logo footer-logo" href="index.html">
+          <img src="static/media/logo.png" alt="" class="logo-img" aria-hidden="true" />
+          <span class="logo-open">open</span><span class="logo-name footer-logo-text">zirndorf</span>
+        </a>
+        <p>Digitale Möglichkeiten für Zirndorf.</p>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col">
+          <strong>Tools</strong>
+          <a href="https://wahl2026.openzirndorf.de/" target="_blank" rel="noopener noreferrer">Wahlanalyse 2026</a>
+          <a href="https://ideen.openzirndorf.de/" target="_blank" rel="noopener noreferrer">Ideenbörse</a>
+        </div>
+        <div class="footer-col">
+          <strong>Community</strong>
+          <a href="index.html#mitmachen">Slack</a>
+          <a href="https://github.com/openzirndorf" target="_blank" rel="noopener noreferrer">GitHub</a>
+          <a href="https://instagram.com/openzirndorf" target="_blank" rel="noopener noreferrer">Instagram</a>
+        </div>
+        <div class="footer-col">
+          <strong>Rechtliches</strong>
+          <a href="impressum.html">Impressum</a>
+          <a href="datenschutz.html">Datenschutz</a>
+        </div>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <span>© <span id="year"></span> OpenZirndorf · Entwickelt mit ❤️ in Zirndorf</span>
+    </div>
+  </footer>
+
+  <script src="static/app.js"></script>
+</body>
+</html>
