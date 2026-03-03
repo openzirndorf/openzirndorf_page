@@ -713,10 +713,7 @@ h1 {
 
   .featured-grid,
   .pillars-grid,
-  .media-grid,
   .about-grid { grid-template-columns: 1fr; }
-
-  .einstieg-grid { grid-template-columns: repeat(2, 1fr); }
 
   .event-item { grid-template-columns: 72px 1fr; }
   .event-item .btn { display: none; }
@@ -730,7 +727,6 @@ h1 {
   .hero-actions { flex-direction: column; }
   .hero-actions .btn { width: 100%; }
   .stats-grid { grid-template-columns: repeat(2, 1fr); }
-  .einstieg-grid { grid-template-columns: 1fr; }
   .footer-links { grid-template-columns: 1fr; }
   .cta-card { padding: 2.5rem 1.5rem; }
   .cta-actions { flex-direction: column; }
@@ -821,7 +817,7 @@ h1 {
    ============================================================ */
 .einstieg-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fill, minmax(min(250px, 100%), 1fr));
   gap: 1.25rem;
   margin-bottom: 1.5rem;
 }
@@ -917,7 +913,7 @@ h1 {
    ============================================================ */
 .media-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fill, minmax(min(220px, 100%), 1fr));
   gap: 1.25rem;
   margin-bottom: 1.5rem;
 }
