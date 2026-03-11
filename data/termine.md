@@ -2,8 +2,8 @@
 <!-- Pflichtfelder: Datum, Zeit, Ort. Optionales Feld: Link -->
 <!-- Datum-Format: Wochentag, TT. Monat JJJJ   Beispiel: Mi, 11. März 2026 -->
 
-## Erster Stammtisch OpenZirndorf
-Datum: Mi, 11. März 2026
-Zeit: 19:30 Uhr
+## Stammtisch OpenZirndorf
+Datum: Mo, 30. März 2026
+Zeit: 19:00 Uhr
 Ort: Hotel Knorz, Volkhardtstraße 18, 90513 Zirndorf
-Text: Unser allererster Stammtisch! Wir stellen uns vor, zeigen was bisher entstanden ist und reden über nächste Schritte. Alle sind herzlich willkommen – ganz ohne Vorwissen. Komm einfach vorbei.
+Text: Wir stellen aktuelle Entwicklungen vor, sprechen über nächste Schritte und freuen uns auf den Austausch mit allen Interessierten. Alle sind herzlich willkommen, auch ohne Vorwissen. Komm einfach vorbei.
