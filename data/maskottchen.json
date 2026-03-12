@@ -23,5 +23,15 @@
     "datei": "nico.png",
     "name": "Nico",
     "beschreibungstext": "Nico behält viele Aufgaben gleichzeitig im Griff. Mit Headset und Controller steht er für digitale Kompetenz, Vernetzung und die junge, technikaffine Community. Er symbolisiert Multitasking, Teamplay und Freude an moderner Technologie."
+  },
+  {
+    "datei": "horst.png",
+    "name": "Horst",
+    "beschreibungstext": "Horst ist der weise Zauberer von openzirndorf. Mit seinem langen weißen Bart und seinem Umhang voller Code-Symbole kennt er die Geheimnisse digitaler Werkzeuge. Wo andere nur komplizierte Technik sehen, erkennt Horst Möglichkeiten. Mit Erfahrung, Neugier und einem Augenzwinkern hilft er dabei, Ideen in funktionierende Projekte zu verwandeln – damit aus guten Einfällen echte Lösungen für Zirndorf werden."
+  },
+  {
+    "datei": "paul.png",
+    "name": "Paul",
+    "beschreibungstext": "Paul ist der freundliche Ehrenbürger unter den openzirndorf-Maskottchen. Der Waschbär mit dem großen Herzen freut sich über alles, was Menschen zusammenbringt: neue Ideen, gemeinsames Tüfteln und Projekte für die Stadt. Mit seiner offenen Art begrüßt er neue Mitmacherinnen und Mitmacher und erinnert daran, dass aus kleinen Ideen manchmal etwas Großes entstehen kann."
   }
 ]
