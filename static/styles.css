@@ -4,27 +4,51 @@
 
 /* ---- Variables ---- */
 :root {
-  --green: #2d8f0f;
-  --green-hover: #267a0c;
-  --green-light: #eef7e6;
-  --green-dark: #1a5208;
-  --orange: #d96020;
-  --orange-light: #fff4eb;
-  --blue: #0969da;
-  --blue-light: #e8f4ff;
-  --text: #0d1117;
-  --text-muted: #6b7280;
-  --bg: #ffffff;
-  --bg-alt: #f6f8fa;
-  --border: #e5e7eb;
-  --radius-sm: 8px;
-  --radius: 14px;
-  --radius-lg: 24px;
-  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
-  --shadow: 0 4px 16px rgba(0, 0, 0, 0.08), 0 1px 4px rgba(0, 0, 0, 0.04);
+  /* Brandfarben → oz-Tokens */
+  --green:        var(--oz-brand-green);
+  --green-hover:  var(--oz-brand-green-hover);
+  --green-light:  var(--oz-bg-green);
+  --green-dark:   var(--oz-brand-green-dark);
+  --orange:       var(--oz-brand-orange);
+  --orange-light: var(--oz-bg-orange);
+
+  /* Seitenspezifisch (kein oz-Token) */
+  --blue:         #0969da;
+  --blue-light:   #e8f4ff;
+
+  /* Text & Hintergründe → oz-Tokens */
+  --text:         var(--oz-text-primary);
+  --text-muted:   var(--oz-text-secondary);
+  --bg:           var(--oz-bg-primary);
+  --bg-alt:       var(--oz-bg-surface);
+  --border:       var(--oz-bg-subtle);
+
+  /* Radien (seitenspezifisch, überschreibt shadcn-Mapping aus tokens.css) */
+  --radius-sm:    8px;
+  --radius:       14px;
+  --radius-lg:    24px;
+
+  /* Schatten */
+  --shadow-sm:    var(--oz-shadow-sm);
+  --shadow:       0 4px 16px rgba(0, 0, 0, 0.08), 0 1px 4px rgba(0, 0, 0, 0.04);
   --shadow-hover: 0 8px 32px rgba(0, 0, 0, 0.12), 0 2px 8px rgba(0, 0, 0, 0.06);
-  --container: min(1160px, calc(100% - 2.5rem));
-  --t: 0.2s ease;
+
+  /* Layout & Transition */
+  --container:    min(1160px, calc(100% - 2.5rem));
+  --t:            0.2s ease;
+}
+
+/* Dark Mode: Seite ist noch rein light-mode — oz-Tokens zurücksetzen */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --oz-text-primary:    #1F2937;
+    --oz-text-secondary:  #6B7280;
+    --oz-bg-primary:      #FFFFFF;
+    --oz-bg-surface:      #F3F4F6;
+    --oz-bg-subtle:       #E5E7EB;
+    --oz-bg-green:        #eef7e6;
+    --oz-bg-orange:       #fff4eb;
+  }
 }
 
 /* ---- Reset & Base ---- */
@@ -32,7 +56,7 @@
 html { scroll-behavior: smooth; }
 body {
   margin: 0;
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-family: var(--oz-font-body);
   font-size: 1rem;
   line-height: 1.6;
   color: var(--text);
@@ -43,7 +67,7 @@ body {
 a { color: inherit; text-decoration: none; }
 img { max-width: 100%; height: auto; }
 p { margin: 0 0 1rem; }
-h1, h2, h3, h4 { margin: 0; line-height: 1.15; }
+h1, h2, h3, h4 { margin: 0; line-height: 1.15; font-family: var(--oz-font-heading); }
 button { cursor: pointer; border: none; background: none; padding: 0; }
 
 /* ---- Accessibility ---- */
@@ -94,7 +118,7 @@ button { cursor: pointer; border: none; background: none; padding: 0; }
 .btn-primary:hover {
   background: var(--green-hover);
   border-color: var(--green-hover);
-  box-shadow: 0 4px 16px rgba(45, 143, 15, 0.35);
+  box-shadow: 0 4px 16px rgba(0, 154, 0, 0.35);
 }
 
 .btn-outline {
@@ -255,7 +279,7 @@ button { cursor: pointer; border: none; background: none; padding: 0; }
   border-radius: 999px;
   font-size: 0.83rem;
   font-weight: 600;
-  border: 1px solid rgba(45, 143, 15, 0.25);
+  border: 1px solid rgba(0, 154, 0, 0.25);
   margin-bottom: 1.25rem;
 }
 
@@ -316,7 +340,7 @@ h1 {
 }
 .hero-orb-1 {
   width: 320px; height: 320px;
-  background: radial-gradient(circle, rgba(45, 143, 15, 0.3), transparent 65%);
+  background: radial-gradient(circle, rgba(0, 154, 0, 0.3), transparent 65%);
   top: -40px; left: 10px;
 }
 .hero-orb-2 {
@@ -1150,7 +1174,7 @@ h1 {
 .modal-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(13, 17, 23, 0.55);
+  background: rgba(31, 41, 55, 0.55);
   display: flex;
   align-items: center;
   justify-content: center;

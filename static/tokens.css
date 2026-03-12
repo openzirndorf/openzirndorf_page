@@ -1,0 +1,186 @@
+/**
+ * OpenZirndorf Design Tokens v1
+ * openzirndorf.de
+ *
+ * Einbindung:
+ *   <link rel="stylesheet" href="https://openzirndorf.de/design-tokens/v1/tokens.css">
+ *
+ * Versioning:
+ *   v1.x = abwärtskompatible Änderungen
+ *   v2   = Breaking Changes → Apps migrieren eigenständig
+ */
+
+:root {
+
+  /* ────────────────────────────────────────────────────────
+   * BRAND — Offizielle Stadtfarben Zirndorf (unveränderlich)
+   * ──────────────────────────────────────────────────────── */
+  --oz-brand-green:        #009A00;
+  --oz-brand-green-hover:  #007a00;   /* Hover/aktiv-Zustand */
+  --oz-brand-green-dark:   #006600;   /* Text auf grünem Hintergrund */
+  --oz-brand-dark:         #1F2937;
+  --oz-brand-red:          #FF0000;
+  --oz-brand-orange:       #d96020;   /* Sekundäre Akzentfarbe */
+
+  /* ────────────────────────────────────────────────────────
+   * COLOR — Anwendungs-Tokens (WCAG AA konform)
+   *
+   * WCAG-Regel:
+   *   --oz-brand-green und --oz-brand-red haben auf Weiß
+   *   keinen ausreichenden Kontrast für Text.
+   *   → Stadtfarben NUR als Hintergrund verwenden,
+   *     darauf immer --oz-text-inverse (#FFF).
+   *   → Fließtext immer --oz-text-primary auf hellem BG.
+   * ──────────────────────────────────────────────────────── */
+
+  /* Text */
+  --oz-text-primary:       #1F2937;   /* Fließtext, Labels — Kontrast 16:1 ✓ */
+  --oz-text-secondary:     #6B7280;   /* Metainfo, Captions */
+  --oz-text-inverse:       #FFFFFF;   /* Text auf grünem / dunklem Hintergrund */
+  --oz-text-disabled:      #9CA3AF;
+
+  /* Hintergründe */
+  --oz-bg-primary:         #FFFFFF;
+  --oz-bg-surface:         #F3F4F6;   /* Karten, Panels */
+  --oz-bg-subtle:          #E5E7EB;   /* Trennlinien, Hover */
+  --oz-bg-brand:           #009A00;   /* Grün als Fläche → Text: --oz-text-inverse */
+  --oz-bg-dark:            #1F2937;   /* Dunkle Fläche  → Text: --oz-text-inverse */
+  --oz-bg-green:           #eef7e6;   /* Hintergrundtint Grün */
+  --oz-bg-orange:          #fff4eb;   /* Hintergrundtint Orange */
+
+  /* Status */
+  --oz-color-success:      #15803D;   /* Kontrast 5.1:1 auf Weiß ✓ */
+  --oz-color-warning:      #B45309;
+  --oz-color-error:        #B91C1C;   /* abgedunkelt für Text-Kontrast */
+  --oz-color-info:         #1D4ED8;
+
+  /* Akzent (Rot nur für nicht-textuelles: Icons, Badges, Borders) */
+  --oz-accent-red:         #FF0000;   /* Stadtfarbe — NUR dekorativ, nie als Textfarbe */
+
+  /* ────────────────────────────────────────────────────────
+   * TYPOGRAPHY
+   * ──────────────────────────────────────────────────────── */
+  --oz-font-heading:       'Montserrat', sans-serif;   /* Bold — Stadtidentität */
+  --oz-font-body:          'Inter', 'Segoe UI', system-ui, sans-serif;
+  --oz-font-mono:          'JetBrains Mono', 'Fira Code', monospace;
+
+  --oz-font-size-xs:       0.75rem;    /*  12px */
+  --oz-font-size-sm:       0.875rem;   /*  14px */
+  --oz-font-size-base:     1rem;       /*  16px */
+  --oz-font-size-lg:       1.125rem;   /*  18px */
+  --oz-font-size-xl:       1.25rem;    /*  20px */
+  --oz-font-size-2xl:      1.5rem;     /*  24px */
+  --oz-font-size-3xl:      1.875rem;   /*  30px */
+  --oz-font-size-4xl:      2.25rem;    /*  36px */
+
+  --oz-font-weight-normal:  400;
+  --oz-font-weight-medium:  500;
+  --oz-font-weight-bold:    700;       /* Standard für Montserrat-Headlines */
+
+  --oz-line-height-tight:   1.25;
+  --oz-line-height-base:    1.6;
+  --oz-line-height-relaxed: 1.75;
+
+  /* ────────────────────────────────────────────────────────
+   * SPACING (4px-Grid)
+   * ──────────────────────────────────────────────────────── */
+  --oz-space-1:    0.25rem;   /*  4px */
+  --oz-space-2:    0.5rem;    /*  8px */
+  --oz-space-3:    0.75rem;   /* 12px */
+  --oz-space-4:    1rem;      /* 16px */
+  --oz-space-5:    1.25rem;   /* 20px */
+  --oz-space-6:    1.5rem;    /* 24px */
+  --oz-space-8:    2rem;      /* 32px */
+  --oz-space-10:   2.5rem;    /* 40px */
+  --oz-space-12:   3rem;      /* 48px */
+  --oz-space-16:   4rem;      /* 64px */
+
+  /* ────────────────────────────────────────────────────────
+   * SHAPE
+   * ──────────────────────────────────────────────────────── */
+  --oz-radius-sm:   4px;
+  --oz-radius:      8px;
+  --oz-radius-lg:  16px;
+  --oz-radius-xl:  24px;
+  --oz-radius-full: 9999px;   /* Pills, Badges */
+
+  /* ────────────────────────────────────────────────────────
+   * SHADOW
+   * ──────────────────────────────────────────────────────── */
+  --oz-shadow-sm:   0 1px 3px rgba(0, 0, 0, 0.08);
+  --oz-shadow:      0 2px 8px rgba(0, 0, 0, 0.10);
+  --oz-shadow-lg:   0 8px 24px rgba(0, 0, 0, 0.12);
+  --oz-shadow-xl:   0 16px 48px rgba(0, 0, 0, 0.16);
+
+  /* ────────────────────────────────────────────────────────
+   * LAYOUT
+   * ──────────────────────────────────────────────────────── */
+  --oz-max-width:        1200px;
+  --oz-max-width-prose:   680px;   /* Lesebreite für Fließtext */
+  --oz-header-height:      64px;
+
+  /* ────────────────────────────────────────────────────────
+   * TRANSITIONS
+   * ──────────────────────────────────────────────────────── */
+  --oz-transition-fast:   150ms ease;
+  --oz-transition-base:   250ms ease;
+  --oz-transition-slow:   400ms ease;
+
+  /* ────────────────────────────────────────────────────────
+   * Z-INDEX
+   * ──────────────────────────────────────────────────────── */
+  --oz-z-base:      0;
+  --oz-z-raised:   10;
+  --oz-z-dropdown: 100;
+  --oz-z-sticky:   200;
+  --oz-z-modal:    300;
+  --oz-z-toast:    400;
+
+  /* ────────────────────────────────────────────────────────
+   * SHADCN-MAPPING
+   * Shadcn UI erwartet diese CSS-Properties.
+   * Mapping auf OZ-Tokens — einmalig, kein Umbau der Komponenten.
+   * ──────────────────────────────────────────────────────── */
+  --background:            var(--oz-bg-primary);
+  --foreground:            var(--oz-text-primary);
+  --card:                  var(--oz-bg-primary);
+  --card-foreground:       var(--oz-text-primary);
+  --popover:               var(--oz-bg-primary);
+  --popover-foreground:    var(--oz-text-primary);
+  --primary:               var(--oz-brand-green);
+  --primary-foreground:    var(--oz-text-inverse);
+  --secondary:             var(--oz-bg-surface);
+  --secondary-foreground:  var(--oz-text-primary);
+  --muted:                 var(--oz-bg-subtle);
+  --muted-foreground:      var(--oz-text-secondary);
+  --accent:                var(--oz-bg-surface);
+  --accent-foreground:     var(--oz-text-primary);
+  --destructive:           var(--oz-color-error);
+  --destructive-foreground:var(--oz-text-inverse);
+  --border:                var(--oz-bg-subtle);
+  --input:                 var(--oz-bg-subtle);
+  --ring:                  var(--oz-brand-green);
+  --radius:                var(--oz-radius);   /* 8px — shadcn-Standard; openzirndorf_page überschreibt mit 14px */
+
+}
+
+/* ────────────────────────────────────────────────────────────
+ * DARK MODE (optional, Phase 2)
+ * ────────────────────────────────────────────────────────── */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --oz-text-primary:    #F9FAFB;
+    --oz-text-secondary:  #9CA3AF;
+    --oz-text-inverse:    #1F2937;
+    --oz-bg-primary:      #111827;
+    --oz-bg-surface:      #1F2937;
+    --oz-bg-subtle:       #374151;
+
+    --background:         var(--oz-bg-primary);
+    --foreground:         var(--oz-text-primary);
+    --card:               var(--oz-bg-surface);
+    --card-foreground:    var(--oz-text-primary);
+    --border:             var(--oz-bg-subtle);
+    --input:              var(--oz-bg-subtle);
+  }
+}
