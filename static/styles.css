@@ -197,6 +197,7 @@ button { cursor: pointer; border: none; background: none; padding: 0; }
 }
 .nav a:hover { color: var(--text); background: var(--bg-alt); }
 .nav-cta { margin-left: auto; }
+.nav-shop-link { font-weight: 600; color: var(--orange) !important; }
 
 /* Hamburger */
 .hamburger {
@@ -427,6 +428,19 @@ h1 {
   gap: 1.25rem;
 }
 
+.portal-cta {
+  margin-top: 1.5rem;
+  text-align: center;
+}
+.portal-cta-link {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--green);
+  text-decoration: none;
+  transition: color var(--t);
+}
+.portal-cta-link:hover { color: var(--green-dark); text-decoration: underline; }
+
 .feature-card {
   position: relative;
   display: flex;
@@ -452,6 +466,17 @@ h1 {
   border-color: rgba(217, 96, 32, 0.15);
 }
 .feature-card-orange:hover { border-color: rgba(217, 96, 32, 0.3); }
+.feature-card-green {
+  background: var(--green-light);
+  border-color: rgba(0, 154, 0, 0.15);
+}
+.feature-card-green:hover { border-color: rgba(0, 154, 0, 0.3); }
+.feature-card-featured {
+  grid-column: 1 / -1;
+}
+.feature-icon-green { background: rgba(0, 154, 0, 0.12); }
+.feature-card-green .feature-tag { background: rgba(0, 154, 0, 0.1); color: var(--green-dark); }
+.feature-tag-green { background: rgba(0, 154, 0, 0.1) !important; color: var(--green-dark) !important; }
 
 .feature-icon {
   width: 54px; height: 54px;
