@@ -48,7 +48,6 @@ Bilddateien ablegen unter: `static/media/maskottchen/<dateiname>.png`
 
 | Datei | Pfad |
 |-------|------|
-| Logo (Vektor) | `static/media/logo.svg` |
 | Logo (Bitmap) | `static/media/logo.png` |
 
 ---
