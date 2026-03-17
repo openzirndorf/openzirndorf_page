@@ -63,7 +63,11 @@ body {
   background: var(--bg);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
+main { flex: 1; }
 a { color: inherit; text-decoration: none; }
 img { max-width: 100%; height: auto; }
 p { margin: 0 0 1rem; }
