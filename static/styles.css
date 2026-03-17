@@ -422,6 +422,83 @@ h1 {
 /* ============================================================
    Featured Cards
    ============================================================ */
+/* ── Tools Overview ── */
+.tools-overview {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.tools-categories {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.25rem;
+}
+.tools-category {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  padding: 1.25rem;
+  border-radius: var(--radius);
+  background: var(--bg-alt);
+}
+.tools-category-icon {
+  font-size: 1.75rem;
+  flex-shrink: 0;
+  line-height: 1;
+  margin-top: 0.1rem;
+}
+.tools-category strong {
+  display: block;
+  font-size: 0.95rem;
+  margin-bottom: 0.3rem;
+}
+.tools-category p {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  margin: 0;
+  line-height: 1.5;
+}
+.tools-portal-link {
+  display: block;
+  text-decoration: none;
+  color: var(--text);
+  border: 1.5px solid rgba(0, 154, 0, 0.25);
+  border-radius: var(--radius-lg);
+  background: var(--green-light);
+  transition: border-color var(--t), box-shadow var(--t), transform var(--t);
+}
+.tools-portal-link:hover {
+  border-color: rgba(0, 154, 0, 0.5);
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-2px);
+}
+.tools-portal-inner {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.25rem 1.5rem;
+}
+.tools-portal-icon {
+  font-size: 2rem;
+  flex-shrink: 0;
+}
+.tools-portal-inner strong {
+  display: block;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--green-dark);
+}
+.tools-portal-inner p {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  margin: 0.15rem 0 0;
+}
+.tools-portal-inner .feature-arrow {
+  margin-left: auto;
+  font-size: 1.25rem;
+  color: var(--green);
+}
+
 .featured-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
