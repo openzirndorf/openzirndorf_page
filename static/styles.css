@@ -1372,3 +1372,93 @@ h1 {
   .modal-day { font-size: 1.75rem; }
   .event-details-hint { display: none; }
 }
+
+/* ============================================================
+   Erfahre Zirndorf Feature Section
+   ============================================================ */
+.erfahre-section {
+  padding: 0;
+  background: var(--bg);
+}
+.erfahre-card {
+  background: linear-gradient(135deg, var(--green) 0%, #007a00 100%);
+  color: #fff;
+  padding: 3rem 2.5rem;
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+}
+.erfahre-text { flex: 1; }
+.erfahre-live-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  background: rgba(255,255,255,0.18);
+  border: 1px solid rgba(255,255,255,0.35);
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 0.3rem 0.85rem;
+  margin-bottom: 1rem;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+.erfahre-card h2 {
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  font-family: var(--oz-font-heading);
+  margin-bottom: 0.75rem;
+  color: #fff;
+}
+.erfahre-card p {
+  font-size: 1.05rem;
+  opacity: 0.9;
+  max-width: 54ch;
+  margin-bottom: 1.5rem;
+  line-height: 1.65;
+}
+.erfahre-feature-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.75rem;
+}
+.erfahre-feature-pills .pill {
+  background: rgba(255,255,255,0.18);
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.3);
+}
+.erfahre-visual {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  text-align: center;
+  opacity: 0.9;
+}
+.erfahre-phone-icon {
+  width: 80px;
+  height: 80px;
+  background: rgba(255,255,255,0.15);
+  border: 2px solid rgba(255,255,255,0.3);
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+}
+.erfahre-visual span {
+  font-size: 0.8rem;
+  font-weight: 600;
+  opacity: 0.75;
+}
+
+@media (max-width: 768px) {
+  .erfahre-card {
+    flex-direction: column;
+    padding: 2rem 1.25rem;
+    gap: 1.5rem;
+    align-items: flex-start;
+  }
+  .erfahre-visual { display: none; }
+}
