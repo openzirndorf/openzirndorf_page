@@ -1088,6 +1088,45 @@ h1 {
 .media-info p { font-size: 0.83rem; color: var(--text-muted); margin-bottom: 0.75rem; line-height: 1.4; }
 .media-info code { font-size: 0.78rem; background: var(--bg-alt); padding: 0.1rem 0.3rem; border-radius: 4px; }
 
+.presse-kontakt { font-size: 0.85rem; color: var(--text-muted); }
+.presse-kontakt a { color: inherit; }
+
+/* ============================================================
+   Vorstand
+   ============================================================ */
+.vorstand-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 3fr) minmax(220px, 2fr);
+  gap: 2rem;
+  align-items: center;
+}
+@media (max-width: 720px) {
+  .vorstand-grid { grid-template-columns: 1fr; }
+}
+.vorstand-photo {
+  width: 100%;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  display: block;
+}
+.vorstand-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+.vorstand-list li {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 0.9rem;
+  border-bottom: 1px solid var(--border);
+}
+.vorstand-list li:last-child { border-bottom: none; padding-bottom: 0; }
+.vorstand-list strong { font-size: 1rem; }
+.vorstand-list span { font-size: 0.85rem; color: var(--text-muted); }
+
 .media-downloads { display: flex; gap: 0.4rem; flex-wrap: wrap; }
 .media-dl {
   display: inline-block;
