@@ -1481,6 +1481,14 @@ h1 {
   align-items: center;
   gap: 3rem;
 }
+/* Zweite Akzentfarbe (var(--orange), sonst z.B. beim Shop-Nav-Link
+   genutzt) statt wieder Grün - Garagenflohmarkt ist selbst schon grün
+   gebrandet (siehe garagenflohmarkt.openzirndorf.de), zwei direkt
+   untereinander liegende, identisch grüne Feature-Karten wären auf den
+   ersten Blick schwer auseinanderzuhalten. */
+.erfahre-card--orange {
+  background: linear-gradient(135deg, var(--orange) 0%, #b8521b 100%);
+}
 .erfahre-text { flex: 1; }
 .erfahre-live-badge {
   display: inline-flex;

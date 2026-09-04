@@ -6,3 +6,9 @@
 Datum: Do, 3. September 2026
 Zeit: 19:00 Uhr
 Ort: Hotel Knorz, Zirndorf
+
+## Garagenflohmarkt Zirndorf
+Datum: So, 4. Oktober 2026
+Zeit: 10:00 – 16:00 Uhr
+Ort: Ganz Zirndorf
+Link: https://garagenflohmarkt.openzirndorf.de/
