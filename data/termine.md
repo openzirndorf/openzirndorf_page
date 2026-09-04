@@ -3,7 +3,7 @@
 <!-- Datum-Format: Wochentag, TT. Monat JJJJ   Beispiel: Mi, 11. März 2026 -->
 
 ## Stammtisch OpenZirndorf
-Datum: Do, 3. September 2026
+Datum: Do, 1. Oktober 2026
 Zeit: 19:00 Uhr
 Ort: Hotel Knorz, Zirndorf
 
