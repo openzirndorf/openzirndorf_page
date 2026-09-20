@@ -1,0 +1,543 @@
+/* Beitrittsformular OpenZirndorf – eigenständiges, minimales Stylesheet.
+   Keine Webfonts, keine externen Ressourcen. */
+
+:root {
+  --gruen: #009a00;
+  --gruen-dunkel: #007a00;
+  --dunkel: #1f2937;
+  --grau: #6b7280;
+  --hellgrau: #d1d5db;
+  --bg-alt: #f3f4f6;
+  --orange-hell: #fff4eb;
+  --orange: #d96020;
+  --fehler: #cc0000;
+  --radius: 12px;
+  --schatten: 0 2px 10px rgba(0, 0, 0, 0.06);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+html {
+  color-scheme: light;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: var(--dunkel);
+  background: #fff;
+  line-height: 1.5;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+a {
+  color: var(--gruen-dunkel);
+}
+
+h1, h2, h3 {
+  font-weight: 800;
+  line-height: 1.25;
+}
+
+h2:focus,
+h3:focus {
+  outline: none;
+}
+
+/* ---------------------------------------------------------------------- */
+/* Kopf- und Fußbereich                                                   */
+/* ---------------------------------------------------------------------- */
+
+.kopfbereich {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 1.25rem 1.25rem 0.5rem;
+}
+
+.kopfbereich-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  text-decoration: none;
+  color: var(--dunkel);
+  font-weight: 800;
+  font-size: 1.05rem;
+}
+
+.kopfbereich-logo img {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+}
+
+.kopfbereich-untertitel {
+  margin: 0.35rem 0 0;
+  color: var(--grau);
+  font-size: 0.95rem;
+}
+
+.fussbereich {
+  max-width: 640px;
+  margin: 2rem auto 0;
+  padding: 1.25rem;
+  border-top: 1px solid var(--hellgrau);
+  color: var(--grau);
+  font-size: 0.82rem;
+}
+
+.fussbereich a {
+  color: inherit;
+}
+
+/* ---------------------------------------------------------------------- */
+/* Layout                                                                  */
+/* ---------------------------------------------------------------------- */
+
+main {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 0.5rem 1.25rem 3rem;
+}
+
+.fortschritt {
+  margin: 0.5rem 0 1.75rem;
+}
+
+.fortschritt progress {
+  width: 100%;
+  height: 8px;
+  border-radius: 999px;
+  overflow: hidden;
+  appearance: none;
+  border: none;
+  accent-color: var(--gruen);
+  background: var(--bg-alt);
+}
+.fortschritt progress::-webkit-progress-bar {
+  background: var(--bg-alt);
+  border-radius: 999px;
+}
+.fortschritt progress::-webkit-progress-value {
+  background: var(--gruen);
+  border-radius: 999px;
+}
+.fortschritt progress::-moz-progress-bar {
+  background: var(--gruen);
+  border-radius: 999px;
+}
+
+.fortschritt p {
+  margin: 0.6rem 0 0;
+  font-size: 0.85rem;
+  color: var(--grau);
+  font-weight: 600;
+}
+
+.schritt h2 {
+  font-size: 1.4rem;
+  margin: 0 0 1.1rem;
+}
+
+.schritt h3 {
+  font-size: 1.05rem;
+  margin: 1.5rem 0 0.6rem;
+}
+
+/* ---------------------------------------------------------------------- */
+/* Formularfelder                                                         */
+/* ---------------------------------------------------------------------- */
+
+.feldgruppe {
+  margin-bottom: 1.15rem;
+}
+
+.feld-zeile {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.9rem;
+}
+.feld-zeile-plz {
+  grid-template-columns: 110px 1fr;
+}
+@media (max-width: 480px) {
+  .feld-zeile,
+  .feld-zeile-plz {
+    grid-template-columns: 1fr;
+  }
+}
+
+label {
+  display: block;
+  font-size: 0.88rem;
+  font-weight: 600;
+  margin-bottom: 0.35rem;
+}
+
+.optional-hinweis {
+  font-weight: 400;
+  color: var(--grau);
+}
+
+.pflicht-stern {
+  color: var(--fehler);
+  margin-left: 0.15rem;
+}
+
+.pflicht-legende {
+  font-size: 0.85rem;
+  color: var(--grau);
+  margin: 0 0 1.1rem;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="date"],
+input[type="number"] {
+  width: 100%;
+  min-height: 44px;
+  padding: 0.55rem 0.75rem;
+  font-size: 1rem;
+  font-family: inherit;
+  color: var(--dunkel);
+  background: #fff;
+  border: 1.5px solid var(--hellgrau);
+  border-radius: 8px;
+}
+
+input:focus-visible {
+  outline: 2.5px solid var(--gruen);
+  outline-offset: 1px;
+  border-color: var(--gruen);
+}
+
+input[aria-invalid="true"] {
+  border-color: var(--fehler);
+}
+
+.feld-fehler {
+  margin: 0.35rem 0 0;
+  font-size: 0.83rem;
+  color: var(--fehler);
+  font-weight: 600;
+}
+
+.hinweistext {
+  font-size: 0.9rem;
+  color: var(--grau);
+  margin: 0.5rem 0 1.1rem;
+}
+
+.hinweisbox {
+  background: var(--orange-hell);
+  border-left: 4px solid var(--orange);
+  border-radius: var(--radius);
+  padding: 0.9rem 1.1rem;
+  margin: 1rem 0 1.4rem;
+  font-size: 0.9rem;
+  line-height: 1.55;
+}
+.hinweisbox p {
+  margin: 0;
+}
+.hinweisbox label {
+  margin-top: 0.75rem;
+}
+.hinweisbox input {
+  margin-top: 0.2rem;
+}
+
+/* ---------------------------------------------------------------------- */
+/* Optionskarten (Mitgliedschaft / Zahlungsweise)                         */
+/* ---------------------------------------------------------------------- */
+
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.options-karte {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  border: 1.5px solid var(--hellgrau);
+  border-radius: var(--radius);
+  padding: 0.9rem 1rem;
+  cursor: pointer;
+}
+
+.options-karte:has(input:checked) {
+  border-color: var(--gruen);
+  background: #f3fbf3;
+}
+
+.options-karte input[type="radio"] {
+  margin-top: 0.3rem;
+  width: 18px;
+  height: 18px;
+  accent-color: var(--gruen);
+  flex-shrink: 0;
+}
+
+.options-karte-inhalt {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  flex: 1;
+}
+
+.options-karte-titel {
+  font-weight: 700;
+}
+
+.options-karte-kurztext {
+  font-size: 0.86rem;
+  color: var(--grau);
+}
+
+.options-karte-betrag-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.betrag-eingabe {
+  width: 6.5rem;
+  min-height: 40px;
+  padding: 0.4rem 0.6rem;
+  font-size: 0.95rem;
+  border: 1.5px solid var(--hellgrau);
+  border-radius: 8px;
+}
+.betrag-eingabe:disabled {
+  background: var(--bg-alt);
+  color: var(--grau);
+}
+
+.options-karte-betrag-suffix {
+  font-size: 0.85rem;
+  color: var(--grau);
+}
+
+.options-einfach {
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.options-karte-einfach {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  border: 1.5px solid var(--hellgrau);
+  border-radius: var(--radius);
+  padding: 0.8rem 1.1rem;
+  cursor: pointer;
+  flex: 1;
+  min-width: 200px;
+}
+.options-karte-einfach:has(input:checked) {
+  border-color: var(--gruen);
+  background: #f3fbf3;
+}
+.options-karte-einfach input {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--gruen);
+}
+
+/* ---------------------------------------------------------------------- */
+/* Checkboxen (Erklärungen)                                               */
+/* ---------------------------------------------------------------------- */
+
+.checkbox-liste {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  margin-bottom: 0.4rem;
+}
+
+.checkbox-zeile {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.7rem;
+  font-size: 0.9rem;
+  font-weight: 400;
+  cursor: pointer;
+}
+
+.checkbox-zeile input[type="checkbox"] {
+  margin-top: 0.2rem;
+  width: 19px;
+  height: 19px;
+  accent-color: var(--gruen);
+  flex-shrink: 0;
+}
+
+.link-button {
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  color: var(--gruen-dunkel);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.datenschutz-details {
+  border: 1.5px solid var(--hellgrau);
+  border-radius: var(--radius);
+  padding: 0.8rem 1.1rem;
+  margin: 0.5rem 0 1.5rem;
+  font-size: 0.86rem;
+}
+.datenschutz-details summary {
+  cursor: pointer;
+  font-weight: 700;
+}
+.datenschutz-details h4 {
+  margin: 1rem 0 0.3rem;
+  font-size: 0.88rem;
+}
+.datenschutz-details p {
+  margin: 0;
+  color: var(--dunkel);
+  line-height: 1.55;
+}
+
+/* ---------------------------------------------------------------------- */
+/* Unterschriftenfeld                                                     */
+/* ---------------------------------------------------------------------- */
+
+#unterschrift-bereich {
+  margin-top: 1rem;
+}
+
+#unterschrift-canvas-wrap {
+  border: 1.5px dashed var(--hellgrau);
+  border-radius: var(--radius);
+  background: var(--bg-alt);
+}
+
+#unterschrift-canvas {
+  width: 100%;
+  height: 180px;
+  display: block;
+  touch-action: none;
+  cursor: crosshair;
+}
+
+.unterschrift-aktionen {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 0.75rem;
+}
+
+.btn-text {
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  font-weight: 600;
+  color: var(--grau);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/* ---------------------------------------------------------------------- */
+/* Buttons                                                                 */
+/* ---------------------------------------------------------------------- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 46px;
+  padding: 0.65rem 1.4rem;
+  font-size: 0.98rem;
+  font-weight: 700;
+  border-radius: 999px;
+  border: 2px solid transparent;
+  cursor: pointer;
+  text-decoration: none;
+  font-family: inherit;
+}
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.btn-primary {
+  background: var(--gruen);
+  color: #fff;
+  border-color: var(--gruen);
+}
+.btn-primary:hover:not(:disabled) {
+  background: var(--gruen-dunkel);
+  border-color: var(--gruen-dunkel);
+}
+
+.btn-outline {
+  background: #fff;
+  color: var(--dunkel);
+  border-color: var(--hellgrau);
+}
+.btn-outline:hover {
+  border-color: var(--dunkel);
+}
+
+.btn:focus-visible {
+  outline: 2.5px solid var(--gruen);
+  outline-offset: 2px;
+}
+
+.schritt-navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+.schritt-navigation-eins {
+  justify-content: flex-end;
+}
+
+/* ---------------------------------------------------------------------- */
+/* Ergebnis-Schritt                                                        */
+/* ---------------------------------------------------------------------- */
+
+.ergebnis-aktionen {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+  margin: 1rem 0 1.75rem;
+}
+
+.ergebnis-anleitung ol {
+  padding-left: 1.25rem;
+  line-height: 1.7;
+}
+
+#postanschrift {
+  font-weight: 600;
+}

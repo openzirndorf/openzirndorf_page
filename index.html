@@ -1,0 +1,305 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta
+  http-equiv="Content-Security-Policy"
+  content="default-src 'self'; img-src 'self' data:; script-src 'self'; style-src 'self'; connect-src 'none'; base-uri 'none'; form-action 'none'"
+/>
+<title>Beitrittserklärung – OpenZirndorf</title>
+<meta name="description" content="Beitrittserklärung zu OpenZirndorf i. G. – alle Eingaben bleiben in deinem Browser, es werden keine Daten übertragen." />
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="kopfbereich">
+    <a class="kopfbereich-logo" href="https://openzirndorf.de/">
+      <img src="assets/logo.png" alt="OpenZirndorf" />
+      <span>OpenZirndorf</span>
+    </a>
+    <p class="kopfbereich-untertitel">Beitrittserklärung</p>
+  </header>
+
+  <main id="main">
+    <div class="fortschritt">
+      <progress id="fortschritt-balken" value="1" max="4"></progress>
+      <p id="fortschritt-text" aria-live="polite">Schritt 1 von 4 – Art der Mitgliedschaft</p>
+    </div>
+
+    <p class="pflicht-legende">Mit <span class="pflicht-stern" aria-hidden="true">*</span> markierte Felder sind Pflichtfelder.</p>
+
+    <form id="beitritts-formular" novalidate>
+
+      <!-- ===== Schritt 1: Art der Mitgliedschaft ===== -->
+      <section class="schritt" id="schritt-1" data-step="1">
+        <h2 tabindex="-1">Art der Mitgliedschaft</h2>
+
+        <div id="mitgliedschaft-optionen" class="options" role="radiogroup" aria-label="Art der Mitgliedschaft"></div>
+        <p id="fehler-mitgliedschaft" class="feld-fehler" aria-live="polite" hidden></p>
+
+        <div class="hinweisbox">
+          <p>Der Vorstand kann Beiträge nach § 5 der Beitragsordnung in begründeten Einzelfällen stunden, ermäßigen oder ganz erlassen – ein formloser Antrag genügt. Niemand soll aus finanziellen Gründen fernbleiben.</p>
+        </div>
+
+        <div class="schritt-navigation schritt-navigation-eins">
+          <button type="button" class="btn btn-primary" data-weiter>Weiter</button>
+        </div>
+      </section>
+
+      <!-- ===== Schritt 2: Angaben zur Person ===== -->
+      <section class="schritt" id="schritt-2" data-step="2" hidden>
+        <h2 tabindex="-1">Angaben zur Person</h2>
+
+        <div class="feld-zeile">
+          <div class="feldgruppe">
+            <label for="vorname">Vorname <span class="pflicht-stern" aria-hidden="true">*</span></label>
+            <input id="vorname" type="text" autocomplete="given-name" aria-describedby="fehler-vorname" required />
+            <p id="fehler-vorname" class="feld-fehler" aria-live="polite" hidden></p>
+          </div>
+          <div class="feldgruppe">
+            <label for="nachname">Nachname <span class="pflicht-stern" aria-hidden="true">*</span></label>
+            <input id="nachname" type="text" autocomplete="family-name" aria-describedby="fehler-nachname" required />
+            <p id="fehler-nachname" class="feld-fehler" aria-live="polite" hidden></p>
+          </div>
+        </div>
+
+        <div class="feldgruppe">
+          <label for="geburtsdatum">
+            <span id="geburtsdatum-label-text">Geburtsdatum</span>
+            <span id="geburtsdatum-pflicht-stern" class="pflicht-stern" aria-hidden="true">*</span>
+            <span id="geburtsdatum-optional-hinweis" class="optional-hinweis" hidden>(optional – ggf. der Ansprechperson im Verein/Unternehmen)</span>
+          </label>
+          <input id="geburtsdatum" type="date" autocomplete="bday" aria-describedby="fehler-geburtsdatum" required />
+          <p id="fehler-geburtsdatum" class="feld-fehler" aria-live="polite" hidden></p>
+        </div>
+
+        <div class="feldgruppe">
+          <label for="strasse">Straße und Hausnummer <span class="pflicht-stern" aria-hidden="true">*</span></label>
+          <input id="strasse" type="text" autocomplete="street-address" aria-describedby="fehler-strasse" required />
+          <p id="fehler-strasse" class="feld-fehler" aria-live="polite" hidden></p>
+        </div>
+
+        <div class="feld-zeile feld-zeile-plz">
+          <div class="feldgruppe">
+            <label for="plz">PLZ <span class="pflicht-stern" aria-hidden="true">*</span></label>
+            <input id="plz" type="text" inputmode="numeric" autocomplete="postal-code" aria-describedby="fehler-plz" required />
+            <p id="fehler-plz" class="feld-fehler" aria-live="polite" hidden></p>
+          </div>
+          <div class="feldgruppe feldgruppe-breit">
+            <label for="ort">Ort <span class="pflicht-stern" aria-hidden="true">*</span></label>
+            <input id="ort" type="text" autocomplete="address-level2" aria-describedby="fehler-ort" required />
+            <p id="fehler-ort" class="feld-fehler" aria-live="polite" hidden></p>
+          </div>
+        </div>
+
+        <div class="feldgruppe">
+          <label for="email">E-Mail <span class="pflicht-stern" aria-hidden="true">*</span></label>
+          <input id="email" type="email" autocomplete="email" aria-describedby="fehler-email" required />
+          <p id="fehler-email" class="feld-fehler" aria-live="polite" hidden></p>
+        </div>
+
+        <div class="feldgruppe">
+          <label for="telefon">Telefon <span class="optional-hinweis">(optional)</span></label>
+          <input id="telefon" type="tel" autocomplete="tel" />
+        </div>
+
+        <div class="feldgruppe" id="organisation-gruppe" hidden>
+          <label for="organisation">Organisation / Unternehmen <span class="pflicht-stern" aria-hidden="true">*</span></label>
+          <input id="organisation" type="text" autocomplete="organization" aria-describedby="fehler-organisation" />
+          <p id="fehler-organisation" class="feld-fehler" aria-live="polite" hidden></p>
+        </div>
+
+        <div class="feldgruppe">
+          <label for="eintrittsdatum">Gewünschtes Eintrittsdatum <span class="pflicht-stern" aria-hidden="true">*</span></label>
+          <input id="eintrittsdatum" type="date" aria-describedby="fehler-eintrittsdatum" required />
+          <p id="fehler-eintrittsdatum" class="feld-fehler" aria-live="polite" hidden></p>
+        </div>
+
+        <p id="anteiliger-beitrag-hinweis" class="hinweistext" hidden></p>
+
+        <div id="minderjaehrig-hinweis" hidden>
+          <p class="hinweistext">Am gewünschten Eintrittsdatum bist du noch nicht volljährig. Nach § 10 Abs. 2 der Satzung ist dafür die Zustimmung deiner gesetzlichen Vertretung erforderlich. Bitte trage unten ihren Namen ein – die Beitrittserklärung muss dann zusätzlich handschriftlich von ihr unterschrieben werden.</p>
+          <div class="feldgruppe">
+            <label for="vertreter-name">Name der gesetzlichen Vertretung <span class="pflicht-stern" aria-hidden="true">*</span></label>
+            <input id="vertreter-name" type="text" aria-describedby="fehler-vertreter-name" />
+            <p id="fehler-vertreter-name" class="feld-fehler" aria-live="polite" hidden></p>
+          </div>
+        </div>
+
+        <div class="schritt-navigation">
+          <button type="button" class="btn btn-outline" data-zurueck>Zurück</button>
+          <button type="button" class="btn btn-primary" data-weiter>Weiter</button>
+        </div>
+      </section>
+
+      <!-- ===== Schritt 3: Zahlungsweise ===== -->
+      <section class="schritt" id="schritt-3" data-step="3" hidden>
+        <h2 tabindex="-1">Zahlungsweise</h2>
+
+        <div class="options options-einfach" role="radiogroup" aria-label="Zahlungsweise">
+          <label class="options-karte-einfach">
+            <input type="radio" name="zahlungsart" value="lastschrift" id="zahlungsart-lastschrift" />
+            <span>SEPA-Lastschrift</span>
+          </label>
+          <label class="options-karte-einfach">
+            <input type="radio" name="zahlungsart" value="ueberweisung" id="zahlungsart-ueberweisung" />
+            <span>Überweisung</span>
+          </label>
+        </div>
+        <p id="fehler-zahlungsart" class="feld-fehler" aria-live="polite" hidden></p>
+
+        <div id="lastschrift-felder" hidden>
+          <div class="feldgruppe">
+            <label for="kontoinhaber">Kontoinhaber:in <span class="pflicht-stern" aria-hidden="true">*</span></label>
+            <input id="kontoinhaber" type="text" autocomplete="name" aria-describedby="fehler-kontoinhaber" />
+            <p id="fehler-kontoinhaber" class="feld-fehler" aria-live="polite" hidden></p>
+          </div>
+          <div class="feldgruppe">
+            <label for="abweichende-anschrift">Abweichende Anschrift <span class="optional-hinweis">(nur falls abweichend)</span></label>
+            <input id="abweichende-anschrift" type="text" />
+          </div>
+          <div class="feldgruppe">
+            <label for="iban">IBAN <span class="pflicht-stern" aria-hidden="true">*</span></label>
+            <input id="iban" type="text" autocomplete="off" spellcheck="false" aria-describedby="fehler-iban" />
+            <p id="fehler-iban" class="feld-fehler" aria-live="polite" hidden></p>
+          </div>
+          <div class="feldgruppe" id="bic-gruppe" hidden>
+            <label for="bic">BIC <span class="pflicht-stern" aria-hidden="true">*</span></label>
+            <input id="bic" type="text" autocomplete="off" aria-describedby="fehler-bic" />
+            <p id="fehler-bic" class="feld-fehler" aria-live="polite" hidden></p>
+          </div>
+          <div class="feldgruppe">
+            <label for="kreditinstitut">Kreditinstitut <span class="optional-hinweis">(optional)</span></label>
+            <input id="kreditinstitut" type="text" autocomplete="off" />
+          </div>
+        </div>
+
+        <div id="ueberweisung-hinweis" class="hinweisbox" hidden>
+          <p id="ueberweisung-text"></p>
+        </div>
+
+        <div class="schritt-navigation">
+          <button type="button" class="btn btn-outline" data-zurueck>Zurück</button>
+          <button type="button" class="btn btn-primary" data-weiter>Weiter</button>
+        </div>
+      </section>
+
+      <!-- ===== Schritt 4: Erklärungen und Unterschrift ===== -->
+      <section class="schritt" id="schritt-4" data-step="4" hidden>
+        <h2 tabindex="-1">Erklärungen und Unterschrift</h2>
+
+        <div class="checkbox-liste">
+          <label class="checkbox-zeile">
+            <input type="checkbox" id="erklaerung-1" />
+            <span>
+              Ich beantrage die Aufnahme und erkenne die
+              <a href="" id="link-satzung" target="_blank" rel="noopener noreferrer">Satzung</a>
+              und die
+              <a href="" id="link-beitragsordnung" target="_blank" rel="noopener noreferrer">Beitragsordnung</a>
+              an.
+            </span>
+          </label>
+          <label class="checkbox-zeile">
+            <input type="checkbox" id="erklaerung-2" />
+            <span>Mir ist bekannt, dass der Verein nicht im Vereinsregister eingetragen ist und über die Anerkennung als gemeinnützig noch nicht entschieden wurde. Beiträge sind derzeit steuerlich nicht als Spende abziehbar, Zuwendungsbestätigungen können nicht ausgestellt werden.</span>
+          </label>
+          <label class="checkbox-zeile">
+            <input type="checkbox" id="erklaerung-3" />
+            <span>Bei Austritt im laufenden Jahr erfolgt keine Erstattung. Kosten einer selbst verschuldeten Rücklastschrift trage ich.</span>
+          </label>
+          <label class="checkbox-zeile">
+            <input type="checkbox" id="erklaerung-4" />
+            <span>
+              Ich habe die
+              <button type="button" class="link-button" id="datenschutz-oeffnen-button">Datenschutzhinweise</button>
+              zur Kenntnis genommen.
+            </span>
+          </label>
+        </div>
+        <p id="fehler-erklaerungen" class="feld-fehler" aria-live="polite" hidden></p>
+
+        <details id="datenschutz-details" class="datenschutz-details">
+          <summary>Datenschutzhinweise (Volltext)</summary>
+          <div id="datenschutz-inhalt"></div>
+        </details>
+
+        <div id="unterschrift-bereich">
+          <h3 tabindex="-1">Unterschrift</h3>
+
+          <p id="unterschrift-hinweis-minderjaehrig" class="hinweistext" hidden>
+            Da die Zustimmung der gesetzlichen Vertretung handschriftlich erfolgen muss, entfällt hier die digitale Unterschrift. Das PDF enthält zwei leere Unterschriftszeilen – bitte beide handschriftlich unterschreiben.
+          </p>
+
+          <div id="unterschrift-digital-bereich">
+            <p id="unterschrift-quer-hinweis" class="hinweistext" hidden>Auf schmalen Bildschirmen lässt sich meist leichter im Querformat unterschreiben.</p>
+            <div id="unterschrift-canvas-wrap">
+              <canvas id="unterschrift-canvas" aria-label="Unterschriftenfeld – hier mit Maus, Finger oder Stift unterschreiben"></canvas>
+            </div>
+            <div class="unterschrift-aktionen">
+              <button type="button" class="btn btn-outline" id="unterschrift-loeschen">Neu zeichnen</button>
+              <button type="button" class="btn btn-text" id="unterschrift-verzicht">Ohne Unterschrift erzeugen und handschriftlich unterschreiben</button>
+            </div>
+          </div>
+
+          <p id="unterschrift-verzicht-hinweis" class="hinweistext" hidden>
+            Du unterschreibst handschriftlich auf dem ausgedruckten PDF.
+            <button type="button" class="link-button" id="unterschrift-zurueck-zu-digital">Doch digital unterschreiben</button>
+          </p>
+
+          <p id="fehler-unterschrift" class="feld-fehler" aria-live="polite" hidden></p>
+        </div>
+
+        <div class="schritt-navigation">
+          <button type="button" class="btn btn-outline" data-zurueck>Zurück</button>
+          <button type="button" class="btn btn-primary" id="pdf-erzeugen-button">PDF erzeugen</button>
+        </div>
+      </section>
+
+      <!-- ===== Ergebnis ===== -->
+      <section class="schritt" id="schritt-ergebnis" data-step="ergebnis" hidden>
+        <h2 tabindex="-1">Fast geschafft</h2>
+        <p id="ergebnis-status" class="hinweistext"></p>
+
+        <div class="ergebnis-aktionen">
+          <a id="pdf-download-link" class="btn btn-primary" download>PDF herunterladen</a>
+          <a id="pdf-oeffnen-link" class="btn btn-outline" target="_blank" rel="noopener noreferrer">PDF im neuen Tab öffnen</a>
+          <button type="button" class="btn btn-outline" id="teilen-button" hidden>PDF direkt an Mail-App übergeben</button>
+        </div>
+        <p id="teilen-hinweis" class="hinweistext" hidden>
+          Öffnet die App-Auswahl deines Geräts mit dem PDF als fertigem Anhang. Empfänger bitte selbst eintragen: <span id="teilen-hinweis-email"></span>.
+        </p>
+
+        <div class="ergebnis-anleitung">
+          <h3>So geht's weiter</h3>
+          <ol>
+            <li>PDF öffnen und die Angaben prüfen.</li>
+            <li id="ergebnis-unterschrift-hinweis"></li>
+            <li>
+              Unterschrieben einreichen: per E-Mail an
+              <a id="antrag-email-link" href=""></a>
+              (PDF als Anhang) oder per Post an <span id="postanschrift"></span>.
+            </li>
+          </ol>
+
+          <p class="hinweistext">
+            Eingereichte Beitrittserklärungen und SEPA-Mandate legen wir in unserer eigenen Datenverwaltung ab, für die wir auf den Anbieter Hetzner zurückgreifen – nicht bei einem Cloud- oder Formular-Anbieter eines Dritten.
+          </p>
+        </div>
+
+        <button type="button" class="btn btn-text" id="neue-erklaerung-button">Neue Erklärung ausfüllen</button>
+      </section>
+
+    </form>
+  </main>
+
+  <footer class="fussbereich">
+    <p>OpenZirndorf i. G. · <a href="https://openzirndorf.de/impressum.html">Impressum</a> · <a href="https://openzirndorf.de/datenschutz.html">Datenschutz</a></p>
+  </footer>
+
+  <img id="logo-bild" src="assets/logo.png" alt="" hidden />
+
+  <script src="vendor/pdf-lib.min.js"></script>
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
