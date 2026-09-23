@@ -681,7 +681,7 @@ h1 {
 
 .event-item {
   display: grid;
-  grid-template-columns: 80px 1fr auto;
+  grid-template-columns: 80px minmax(0, 1fr) auto;
   align-items: center;
   gap: 1.25rem;
   background: #fff;
@@ -691,6 +691,9 @@ h1 {
   transition: transform var(--t), box-shadow var(--t);
 }
 .event-item:hover { transform: translateX(3px); box-shadow: var(--shadow-sm); }
+@media (max-width: 860px) {
+  .event-item { grid-template-columns: 72px minmax(0, 1fr); }
+}
 
 .event-date {
   display: flex;
@@ -842,10 +845,8 @@ h1 {
   .stats-grid { grid-template-columns: repeat(2, 1fr); }
 
   .featured-grid,
-  .pillars-grid,
   .about-grid { grid-template-columns: 1fr; }
 
-  .event-item { grid-template-columns: 72px 1fr; }
   .event-item .btn { display: none; }
 
   .footer-inner { grid-template-columns: 1fr; gap: 2rem; }
@@ -917,8 +918,11 @@ h1 {
 
 .pillars-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1.25rem;
+}
+@media (max-width: 860px) {
+  .pillars-grid { grid-template-columns: 1fr; }
 }
 .pillar-card {
   background: #fff;
