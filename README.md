@@ -1,6 +1,6 @@
 # OpenZirndorf – Webseite
 
-Statische Webseite von [OpenZirndorf](https://openzirndorf.de/) (i.G.).
+Statische Webseite von [OpenZirndorf e.V.](https://openzirndorf.de/).
 Entwickelt mit purem HTML, CSS und JavaScript – kein Build-Schritt, kein Framework.
 
 ---

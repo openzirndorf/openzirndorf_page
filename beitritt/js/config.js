@@ -3,10 +3,10 @@
 // Livegang durch echte Daten ersetzt werden.
 
 export const CONFIG = {
-  vereinsname: "OpenZirndorf i. G.",
+  vereinsname: "OpenZirndorf e.V.",
   anschrift: "Erich-Kästner-Weg 33, 90513 Zirndorf",
-  postanschrift: "OpenZirndorf i. G., Erich-Kästner-Weg 33, 90513 Zirndorf",
-  email: "vorstand@openzirndorf.de",
+  postanschrift: "OpenZirndorf e.V., Erich-Kästner-Weg 33, 90513 Zirndorf",
+  email: "team@openzirndorf.de",
   // Adresse, an die die fertige Beitrittserklärung (als PDF-Anhang) geschickt wird.
   antragEmail: "mitgliedsantrag@openzirndorf.de",
 

@@ -83,7 +83,7 @@ function erstelleSchreiber(page, schriften) {
           font: schriften.bold,
           color: toRgb(DUNKEL)
         });
-        page.drawText("Verein in Gründung · Zirndorf", {
+        page.drawText("e.V. · Zirndorf", {
           x: RAND + groesse + 10,
           y: y - groesse / 2 - 18,
           size: 8.5,
@@ -93,7 +93,7 @@ function erstelleSchreiber(page, schriften) {
         y -= groesse + 16;
       } else {
         page.drawText("OpenZirndorf", { x: RAND, y: y - 15, size: 15, font: schriften.bold, color: toRgb(DUNKEL) });
-        page.drawText("Verein in Gründung · Zirndorf", {
+        page.drawText("e.V. · Zirndorf", {
           x: RAND,
           y: y - 28,
           size: 8.5,
@@ -219,8 +219,8 @@ function erstelleSchreiber(page, schriften) {
 }
 
 const ERKLAERUNGEN_TEXTE = [
-  "Ich beantrage die Aufnahme in OpenZirndorf i. G. und erkenne die Satzung sowie die Beitragsordnung des Vereins in ihrer jeweils gültigen Fassung an.",
-  "Mir ist bekannt, dass der Verein nicht im Vereinsregister eingetragen ist und über die Anerkennung als gemeinnützig noch nicht entschieden wurde. Beiträge sind derzeit steuerlich nicht als Spende abziehbar; Zuwendungsbestätigungen können nicht ausgestellt werden.",
+  "Ich beantrage die Aufnahme in OpenZirndorf e.V. und erkenne die Satzung sowie die Beitragsordnung des Vereins in ihrer jeweils gültigen Fassung an.",
+  "Mir ist bekannt, dass über die Anerkennung als gemeinnützig noch nicht entschieden wurde. Beiträge sind derzeit steuerlich nicht als Spende abziehbar; Zuwendungsbestätigungen können nicht ausgestellt werden.",
   "Bei einem Austritt im laufenden Jahr erfolgt keine Erstattung bereits gezahlter Beiträge. Kosten einer selbst verschuldeten Rücklastschrift trage ich.",
   "Ich habe die Datenschutzhinweise auf Seite 3 dieser Erklärung zur Kenntnis genommen."
 ];
