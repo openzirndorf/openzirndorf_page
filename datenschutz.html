@@ -86,6 +86,52 @@
             findet nicht statt.
           </p>
 
+          <h2>Zirndorf Mobil (mobil.openzirndorf.de)</h2>
+
+          <p>
+            Zirndorf Mobil wird ebenfalls als statische Seite über GitHub Pages ausgeliefert
+            und hat kein eigenes Backend. Wir erheben über die App keine personenbezogenen
+            Daten und setzen keine Cookies.
+          </p>
+
+          <p>
+            Um Karte, Fahrzeugpositionen und Abfahrten anzuzeigen, ruft Ihr Browser Daten
+            <strong>direkt</strong> bei den folgenden Diensten ab. Dabei wird technisch bedingt
+            Ihre IP-Adresse an den jeweiligen Anbieter übermittelt
+            (Rechtsgrundlage: Art.&nbsp;6 Abs.&nbsp;1 lit.&nbsp;f DSGVO – berechtigtes Interesse
+            an der Darstellung der Fahrplan- und Kartendaten):
+          </p>
+          <ul>
+            <li><strong>VAG Verkehrs-Aktiengesellschaft Nürnberg</strong> (start.vag.de) – Echtzeit-Abfahrten und Fahrtverläufe</li>
+            <li><strong>Verkehrsverbund Großraum Nürnberg (VGN)</strong> (efa.vgn.de) – Fahrplan-Abfahrten an weiteren Haltestellen</li>
+            <li><strong>OpenStreetMap Foundation</strong> (tile.openstreetmap.org, Vereinigtes Königreich – Angemessenheitsbeschluss der EU-Kommission) – Kartenkacheln</li>
+            <li><strong>v6.db.transport.rest</strong> – Verspätungen von S-Bahn und Regionalzügen</li>
+            <li><strong>router.project-osrm.org</strong> – Straßenverlauf für einzelne Linien ohne vorberechnete Strecke</li>
+            <li><strong>overpass-api.de</strong> – nur wenn Sie die Ebenen P+R, Fahrrad, Taxi oder WC einblenden</li>
+          </ul>
+
+          <p>
+            <strong>Lokale Speicherung:</strong> Damit die App schnell startet und installiert
+            werden kann, speichert Ihr Browser Fahrplandaten (IndexedDB) sowie App-Dateien und
+            Kartenkacheln (Service Worker / Cache Storage). Von Ihnen gemerkte Haltestellen werden
+            ausschließlich lokal im Browser (localStorage) gespeichert. Diese Daten verlassen Ihr
+            Gerät nicht und können jederzeit über die Browser-Einstellungen gelöscht werden
+            (§&nbsp;25 Abs.&nbsp;2 Nr.&nbsp;2 TDDDG – für den von Ihnen gewünschten Dienst unbedingt erforderlich).
+          </p>
+
+          <p>
+            <strong>Standort:</strong> Die Funktion „Haltestellen in meiner Nähe“ fragt Ihren
+            Standort nur nach Tippen auf den entsprechenden Button und nach Ihrer Zustimmung im
+            Browser ab. Der Standort wird ausschließlich auf Ihrem Gerät verarbeitet, um die
+            nächstgelegenen Haltestellen zu bestimmen, und weder an uns noch an Dritte übermittelt
+            oder gespeichert.
+          </p>
+
+          <p>
+            Schriftarten werden von unserem eigenen Server ausgeliefert; es besteht keine
+            Verbindung zu Google Fonts.
+          </p>
+
           <p>
             Bei Fragen zum Datenschutz:
             <a href="mailto:team@openzirndorf.de">team@openzirndorf.de</a>
