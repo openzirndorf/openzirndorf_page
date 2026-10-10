@@ -10,7 +10,7 @@ Link: https://garagenflohmarkt.openzirndorf.de/
 
 ## Stammtisch OpenZirndorf
 Datum: Mo, 12. Oktober 2026
-Zeit: 19:00 Uhr
+Zeit: 20:00 Uhr
 Ort: Hotel Knorz, Zirndorf
 
 ## Herbstmarkt Zirndorf
