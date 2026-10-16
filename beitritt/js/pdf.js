@@ -266,16 +266,8 @@ function erstelleSchreiber(page, schriften) {
   };
 }
 
-// Wortgleich auch als Checkbox-Text in beitritt/index.html (#erklaerung-2).
-// Mitgliedsbeiträge sind trotz Gemeinnützigkeit nicht abziehbar, weil die
-// Satzung (§ 2 Abs. 2 lit. a) die Heimatpflege fördert – § 10b Abs. 1
-// Satz 8 Nr. 3 EStG schließt das für den ganzen Verein aus.
-export const ERKLAERUNG_GEMEINNUETZIGKEIT =
-  "Mir ist bekannt, dass OpenZirndorf e.V. als gemeinnützig anerkannt ist, Mitgliedsbeiträge (auch von Fördermitgliedern) aber nach § 10b Abs. 1 Satz 8 EStG nicht steuerlich abziehbar sind. Zusätzliche Spenden sind abziehbar.";
-
 const ERKLAERUNGEN_TEXTE = [
   "Ich beantrage die Aufnahme in OpenZirndorf e.V. und erkenne die Satzung sowie die Beitragsordnung des Vereins in ihrer jeweils gültigen Fassung an.",
-  ERKLAERUNG_GEMEINNUETZIGKEIT,
   "Bei einem Austritt im laufenden Jahr erfolgt keine Erstattung bereits gezahlter Beiträge. Kosten einer selbst verschuldeten Rücklastschrift trage ich.",
   "Ich habe die Datenschutzhinweise am Ende dieser Erklärung zur Kenntnis genommen."
 ];

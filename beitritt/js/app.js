@@ -423,7 +423,7 @@ function validiereSchritt3() {
 /* Schritt 4 – Erklärungen und Unterschrift                               */
 /* ---------------------------------------------------------------------- */
 
-const CHECKBOX_IDS = ["erklaerung-1", "erklaerung-2", "erklaerung-3", "erklaerung-4"];
+const CHECKBOX_IDS = ["erklaerung-1", "erklaerung-2", "erklaerung-3"];
 
 function befuelleDatenschutzInhalt() {
   const container = document.getElementById("datenschutz-inhalt");
@@ -488,7 +488,7 @@ function validiereSchritt4() {
   if (alleAngehakt) {
     clearFehler("erklaerungen");
   } else {
-    setFehler("erklaerungen", "Bitte bestätige alle vier Punkte.");
+    setFehler("erklaerungen", "Bitte bestätige alle drei Punkte.");
     gueltig = false;
   }
 
