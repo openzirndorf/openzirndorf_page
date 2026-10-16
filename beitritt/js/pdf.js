@@ -153,6 +153,54 @@ function erstelleSchreiber(page, schriften) {
     abstand(px) {
       y -= px;
     },
+    /**
+     * Leere Schreibzeile(n) für das Formular zum Ausdrucken, Beschriftung
+     * klein darunter. felder: [{ label, anteil }] – anteil = relative Breite.
+     */
+    schreibzeile(felder) {
+      const luecke = 14;
+      const gesamt = felder.reduce((summe, f) => summe + (f.anteil || 1), 0);
+      const nutzbar = MAX_BREITE - luecke * (felder.length - 1);
+      y -= 20;
+      let x = RAND;
+      for (const f of felder) {
+        const breite = (nutzbar * (f.anteil || 1)) / gesamt;
+        page.drawLine({ start: { x, y }, end: { x: x + breite, y }, thickness: 0.75, color: toRgb(DUNKEL) });
+        page.drawText(f.label, { x, y: y - 9.5, size: 7.5, font: schriften.normal, color: toRgb(GRAU) });
+        x += breite + luecke;
+      }
+      y -= 16;
+    },
+    ankreuzfeld(text, groesse = 9.5, zeilenabstand = 12.5) {
+      const kasten = 9;
+      const einzug = 17;
+      page.drawRectangle({
+        x: RAND,
+        y: y - groesse - 0.5,
+        width: kasten,
+        height: kasten,
+        borderColor: toRgb(DUNKEL),
+        borderWidth: 0.9
+      });
+      const zeilen = zeileUmbrechen(text, schriften.normal, groesse, MAX_BREITE - einzug);
+      zeilen.forEach((zeile, i) => {
+        page.drawText(zeile, {
+          x: RAND + einzug,
+          y: y - groesse - i * zeilenabstand,
+          size: groesse,
+          font: schriften.normal,
+          color: toRgb(DUNKEL)
+        });
+      });
+      y -= zeilen.length * zeilenabstand + 5;
+    },
+    hinweis(text, groesse = 8.5, zeilenabstand = 11) {
+      const zeilen = zeileUmbrechen(text, schriften.normal, groesse, MAX_BREITE);
+      for (const zeile of zeilen) {
+        page.drawText(zeile, { x: RAND, y: y - groesse, size: groesse, font: schriften.normal, color: toRgb(GRAU) });
+        y -= zeilenabstand;
+      }
+    },
     linie() {
       page.drawLine({
         start: { x: RAND, y },
@@ -218,11 +266,18 @@ function erstelleSchreiber(page, schriften) {
   };
 }
 
+// Wortgleich auch als Checkbox-Text in beitritt/index.html (#erklaerung-2).
+// Mitgliedsbeiträge sind trotz Gemeinnützigkeit nicht abziehbar, weil die
+// Satzung (§ 2 Abs. 2 lit. a) die Heimatpflege fördert – § 10b Abs. 1
+// Satz 8 Nr. 3 EStG schließt das für den ganzen Verein aus.
+export const ERKLAERUNG_GEMEINNUETZIGKEIT =
+  "Mir ist bekannt, dass OpenZirndorf e.V. als gemeinnützig anerkannt ist, Mitgliedsbeiträge (auch von Fördermitgliedern) aber nach § 10b Abs. 1 Satz 8 EStG nicht steuerlich abziehbar sind. Zusätzliche Spenden sind abziehbar.";
+
 const ERKLAERUNGEN_TEXTE = [
   "Ich beantrage die Aufnahme in OpenZirndorf e.V. und erkenne die Satzung sowie die Beitragsordnung des Vereins in ihrer jeweils gültigen Fassung an.",
-  "Mir ist bekannt, dass über die Anerkennung als gemeinnützig noch nicht entschieden wurde. Beiträge sind derzeit steuerlich nicht als Spende abziehbar; Zuwendungsbestätigungen können nicht ausgestellt werden.",
+  ERKLAERUNG_GEMEINNUETZIGKEIT,
   "Bei einem Austritt im laufenden Jahr erfolgt keine Erstattung bereits gezahlter Beiträge. Kosten einer selbst verschuldeten Rücklastschrift trage ich.",
-  "Ich habe die Datenschutzhinweise auf Seite 3 dieser Erklärung zur Kenntnis genommen."
+  "Ich habe die Datenschutzhinweise am Ende dieser Erklärung zur Kenntnis genommen."
 ];
 
 const SEPA_AUTORISIERUNG_1 =
@@ -232,10 +287,15 @@ const SEPA_AUTORISIERUNG_1 =
 const SEPA_AUTORISIERUNG_2 =
   "Hinweis: Ich kann innerhalb von acht Wochen, beginnend mit dem Belastungsdatum, die Erstattung des belasteten Betrages verlangen. Es gelten dabei die mit meinem Kreditinstitut vereinbarten Bedingungen.";
 
-export function datenschutzAbsaetze() {
+/**
+ * @param {object} [optionen]
+ * @param {boolean} [optionen.papier] – Fassung für das leere Formular zum
+ *   Ausdrucken: ohne den Absatz über die Verarbeitung im Browser.
+ */
+export function datenschutzAbsaetze({ papier = false } = {}) {
   return [
     { titel: "Verantwortlicher", text: `${CONFIG.vereinsname}, ${CONFIG.anschrift}, erreichbar unter ${CONFIG.email}.` },
-    {
+    !papier && {
       titel: "Verarbeitung auf dieser Seite",
       text:
         "Die Eingaben in dieses Formular verarbeitet ausschließlich Ihr eigenes Gerät. Es werden keine Daten an den Verein oder an Dritte übertragen. Das erzeugte PDF entsteht in Ihrem Browser. Der Verein erhält Ihre Daten erst, wenn Sie das PDF selbst übermitteln."
@@ -260,7 +320,7 @@ export function datenschutzAbsaetze() {
       text:
         "Auskunft (Art. 15), Berichtigung (Art. 16), Löschung (Art. 17), Einschränkung (Art. 18), Datenübertragbarkeit (Art. 20) sowie Beschwerde bei der Aufsichtsbehörde: Bayerisches Landesamt für Datenschutzaufsicht, Ansbach."
     }
-  ];
+  ].filter(Boolean);
 }
 
 async function seiteEins(pdfDoc, schriften, logoImage, daten) {
@@ -361,13 +421,13 @@ async function seiteZweiSepa(pdfDoc, schriften, daten) {
   return page;
 }
 
-async function seiteDatenschutzUndIntern(pdfDoc, schriften) {
+async function seiteDatenschutzUndIntern(pdfDoc, schriften, { papier = false } = {}) {
   const page = pdfDoc.addPage([SEITENBREITE, SEITENHOEHE]);
   const s = erstelleSchreiber(page, schriften);
 
   s.titel("Datenschutzhinweise");
 
-  for (const absatz of datenschutzAbsaetze()) {
+  for (const absatz of datenschutzAbsaetze({ papier })) {
     s.blockTitel(absatz.titel);
     s.absatz(absatz.text);
     s.abstand(4);
@@ -392,6 +452,129 @@ async function seiteDatenschutzUndIntern(pdfDoc, schriften) {
   }
 
   return page;
+}
+
+/* ---------------------------------------------------------------------- */
+/* Leeres Formular zum Ausdrucken (z. B. für den Infostand)               */
+/* ---------------------------------------------------------------------- */
+
+async function leereSeiteEins(pdfDoc, schriften, logoImage) {
+  const page = pdfDoc.addPage([SEITENBREITE, SEITENHOEHE]);
+  const s = erstelleSchreiber(page, schriften);
+
+  s.kopfzeile(logoImage);
+  s.titel("Beitrittserklärung");
+  s.hinweis("Bitte in Druckbuchstaben ausfüllen. Auch online möglich: openzirndorf.de/beitritt");
+  s.abstand(4);
+
+  s.blockTitel("Angaben zur Person");
+  s.schreibzeile([{ label: "Vorname" }, { label: "Nachname" }]);
+  s.schreibzeile([{ label: "Straße und Hausnummer", anteil: 3 }, { label: "PLZ und Ort", anteil: 2 }]);
+  s.schreibzeile([{ label: "Geburtsdatum" }, { label: "Gewünschtes Eintrittsdatum" }]);
+  s.schreibzeile([{ label: "E-Mail", anteil: 3 }, { label: "Telefon (freiwillig)", anteil: 2 }]);
+  s.schreibzeile([{ label: "Organisation/Unternehmen (nur bei Fördermitgliedschaft einer Organisation; oben dann die Ansprechperson)" }]);
+  s.abstand(6);
+
+  s.blockTitel("Art der Mitgliedschaft und Beitrag");
+  for (const art of CONFIG.mitgliedschaftsarten) {
+    s.ankreuzfeld(`${art.label} (${art.kurztext})`);
+  }
+  s.schreibzeile([{ label: "Jährlicher Beitrag in Euro (bei Fördermitgliedschaft frei wählbar ab Mindestbetrag)" }]);
+  s.hinweis(
+    `Fällig jährlich zum ${CONFIG.faelligkeitText}. Im ersten Jahr anteilig nach den vollen verbleibenden Monaten ab Eintritt (§ 3 Abs. 2 der Beitragsordnung).`
+  );
+  s.abstand(6);
+
+  s.blockTitel("Zahlungsweise");
+  s.ankreuzfeld("SEPA-Lastschrift – bitte auch das Mandat auf Seite 2 ausfüllen und unterschreiben.");
+  s.ankreuzfeld(
+    `Überweisung – erst nach Bestätigung der Mitgliedschaft, spätestens zum ${CONFIG.faelligkeitText}, an IBAN ${formatIban(CONFIG.vereinsIban)}. Verwendungszweck: „Aufnahme“ und Name des Mitglieds bzw. der Organisation.`
+  );
+  s.abstand(4);
+
+  s.blockTitel("Erklärungen");
+  s.absatz("Mit meiner Unterschrift bestätige ich:");
+  s.abstand(2);
+  ERKLAERUNGEN_TEXTE.forEach((text, i) => s.nummerierterAbsatz(i + 1, text));
+
+  s.abstand(4);
+  s.schreibzeile([{ label: "Ort, Datum" }, { label: "Unterschrift des Mitglieds" }]);
+  s.schreibzeile([
+    { label: "Bei Minderjährigen: Name der gesetzlichen Vertretung" },
+    { label: "Unterschrift der gesetzlichen Vertretung" }
+  ]);
+
+  return page;
+}
+
+async function leereSeiteZweiSepa(pdfDoc, schriften) {
+  const page = pdfDoc.addPage([SEITENBREITE, SEITENHOEHE]);
+  const s = erstelleSchreiber(page, schriften);
+
+  s.titel("SEPA-Lastschriftmandat");
+  s.hinweis("Nur ausfüllen, wenn der Beitrag per Lastschrift eingezogen werden soll.");
+  s.abstand(4);
+
+  s.blockTitel("Zahlungsempfänger");
+  s.feld("Name:", CONFIG.vereinsname);
+  s.feld("Anschrift:", CONFIG.anschrift);
+  s.feld("Gläubiger-ID:", CONFIG.glaeubigerId);
+  s.feld("Mandatsreferenz:", "wird gesondert mitgeteilt");
+  s.feld("Zahlungsart:", "Wiederkehrende Zahlung");
+  s.abstand(6);
+
+  s.absatz(SEPA_AUTORISIERUNG_1);
+  s.abstand(4);
+  s.absatz(SEPA_AUTORISIERUNG_2);
+  s.abstand(10);
+
+  s.blockTitel("Kontodaten");
+  s.schreibzeile([{ label: "Kontoinhaber:in" }]);
+  s.schreibzeile([{ label: "Anschrift Kontoinhaber:in (nur falls abweichend von Seite 1)" }]);
+  s.schreibzeile([{ label: "IBAN" }]);
+  s.schreibzeile([{ label: "BIC (nur bei Konten außerhalb Deutschlands)" }, { label: "Kreditinstitut (freiwillig)" }]);
+  s.abstand(10);
+
+  s.absatz(
+    `Der Einzug erfolgt jährlich zum ${CONFIG.faelligkeitText}. Ich werde über den Einzug spätestens fünf Kalendertage vor Fälligkeit informiert (Vorabankündigung), auch per E-Mail. Bei gleichbleibendem Betrag gilt diese Vorabankündigung auch für alle künftigen Einzüge.`
+  );
+
+  s.abstand(10);
+  s.schreibzeile([{ label: "Ort, Datum" }, { label: "Unterschrift Kontoinhaber:in" }]);
+
+  return page;
+}
+
+/**
+ * Leere Beitrittserklärung zum Ausdrucken und handschriftlichen Ausfüllen,
+ * immer mit SEPA-Seite. Gleiche Erklärungs- und Datenschutztexte wie das
+ * Online-Formular, damit beide Fassungen nicht auseinanderlaufen.
+ * Erzeugt wird die Datei mit scripts/erzeuge-blanko-pdf.mjs.
+ *
+ * @param {object} [optionen]
+ * @param {Uint8Array} [optionen.logoPngBytes]
+ */
+export async function erzeugeLeeresBeitrittsPdf({ logoPngBytes } = {}) {
+  const { PDFDocument, StandardFonts } = window.PDFLib;
+  const pdfDoc = await PDFDocument.create();
+
+  pdfDoc.setTitle("Beitrittserklärung OpenZirndorf e.V. (zum Ausdrucken)");
+  pdfDoc.setAuthor(CONFIG.vereinsname);
+  pdfDoc.setSubject("Beitrittserklärung und SEPA-Lastschriftmandat");
+  pdfDoc.setCreator(CONFIG.vereinsname);
+  pdfDoc.setProducer(CONFIG.vereinsname);
+
+  const schriften = {
+    normal: await pdfDoc.embedFont(StandardFonts.Helvetica),
+    bold: await pdfDoc.embedFont(StandardFonts.HelveticaBold)
+  };
+  const logoImage = logoPngBytes ? await pdfDoc.embedPng(logoPngBytes) : null;
+
+  await leereSeiteEins(pdfDoc, schriften, logoImage);
+  await leereSeiteZweiSepa(pdfDoc, schriften);
+  await seiteDatenschutzUndIntern(pdfDoc, schriften, { papier: true });
+
+  return pdfDoc.save();
 }
 
 /**
