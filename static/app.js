@@ -155,6 +155,8 @@ async function ladeTermine() {
         monat     = textMatch[2];
         monatZahl = MONAT_ZAHL[monat] || '';
       }
+      const jahrMatch = datumStr.match(/(\d{4})/);
+      const jahr = jahrMatch ? parseInt(jahrMatch[1], 10) : null;
 
       return {
         titel,
@@ -166,9 +168,23 @@ async function ladeTermine() {
         uhrzeit:   fields.Zeit || '',
         ort:       fields.Ort  || '',
         link:      fields.Link || '',
-        text:      fields.Text || ''
+        text:      fields.Text || '',
+        jahr
       };
-    });
+    })
+      // Vergangene Termine ausblenden – am Veranstaltungstag selbst noch sichtbar.
+      // Ohne erkennbares Datum lieber anzeigen als verschlucken.
+      .filter(t => {
+        if (!t.jahr || !t.monatZahl || t.datum === '?') return true;
+        const heute = new Date();
+        heute.setHours(0, 0, 0, 0);
+        return new Date(t.jahr, t.monatZahl - 1, parseInt(t.datum, 10)) >= heute;
+      });
+
+    if (termineData.length === 0) {
+      container.innerHTML = '<p class="no-events">Aktuell sind keine Termine geplant.</p>';
+      return;
+    }
 
     container.innerHTML = termineData.map((t, i) => `
       <div class="event-item event-clickable" data-index="${i}" role="button" tabindex="0" aria-haspopup="dialog">
