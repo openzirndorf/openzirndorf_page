@@ -826,6 +826,27 @@ h1 {
 }
 .footer-col a:hover { color: #fff; }
 
+.footer-infra {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
+}
+.footer-infra-logo { flex-shrink: 0; line-height: 0; }
+.footer-infra-logo img {
+  height: 36px;
+  width: auto;
+  border-radius: 4px;
+}
+.footer-infra p {
+  font-size: 0.83rem;
+  color: rgba(255, 255, 255, 0.55);
+  margin: 0;
+  line-height: 1.5;
+}
+
 .footer-bottom {
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   padding-top: 1.25rem;
@@ -859,6 +880,7 @@ h1 {
   .hero-actions .btn { width: 100%; }
   .stats-grid { grid-template-columns: repeat(2, 1fr); }
   .footer-links { grid-template-columns: 1fr; }
+  .footer-infra { flex-direction: column; align-items: flex-start; }
   .cta-card { padding: 2.5rem 1.5rem; }
   .cta-actions { flex-direction: column; }
   .cta-actions .btn { width: 100%; }
